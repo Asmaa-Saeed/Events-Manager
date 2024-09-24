@@ -20,10 +20,10 @@ function setMinDate() {
 }
 
 function addEvent() {
-    const eventNameInput = document.querySelector(".event-name").value;
-    const eventOrganizerInput = document.querySelector(".event-organizer").value;
-    const eventDateInput = document.querySelector(".event-date").value;
-    const eventCategoryInput = document.querySelector(".event-category").value;
+    const eventNameInput = document.querySelector(".event-name").value.trim();
+    const eventOrganizerInput = document.querySelector(".event-organizer").value.trim();
+    const eventDateInput = document.querySelector(".event-date").value.trim();
+    const eventCategoryInput = document.querySelector(".event-category").value.trim();
 
     //make sure each input has a value
     // event.preventDefault();
@@ -55,8 +55,9 @@ function addEvent() {
     
     if(!isValid) {
         return; // stop the validation if the isValid = false;
+    }else {
+        showSuccessAlert();
     }
-
     
     const eventTimeStamp = new Date(eventDateInput).getTime();
 
@@ -154,8 +155,13 @@ function deleteEvent(index) {
     displayEvents();
 };
 
-function openPopup(){
-
+function showSuccessAlert() {
+    Swal.fire({
+        title: 'Success!',
+        text: 'Your action was successful.',
+        icon: 'success',
+        confirmButtonText: 'OK'
+    });
 }
 
 setInterval(displayEvents, 1000);
