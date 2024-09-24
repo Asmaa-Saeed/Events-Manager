@@ -19,11 +19,12 @@ function setMinDate() {
     });
 }
 
-function addEvent() {
+  addBtn.addEventListener("click", function addEvent() {
     const eventNameInput = document.querySelector(".event-name").value.trim();
     const eventOrganizerInput = document.querySelector(".event-organizer").value.trim();
     const eventDateInput = document.querySelector(".event-date").value.trim();
     const eventCategoryInput = document.querySelector(".event-category").value.trim();
+    // const eventLocationInput = document.querySelector(".event-location").value.trim();
 
     //make sure each input has a value
     // event.preventDefault();
@@ -66,7 +67,7 @@ function addEvent() {
         organizer: eventOrganizerInput,
         date: eventDateInput,
         time: eventTimeStamp,
-        category:eventCategoryInput
+        category:eventCategoryInput,
     };
 
     let events = JSON.parse(localStorage.getItem("events")) || [];
@@ -87,7 +88,7 @@ function addEvent() {
     inputs.forEach((input) => (input.value = "")); // Clear inputs after adding/updating
 
     displayEvents();
-}
+});
 
 function displayEvents() {
     const events = JSON.parse(localStorage.getItem("events")) || [];

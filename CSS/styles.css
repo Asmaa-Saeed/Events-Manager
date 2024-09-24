@@ -123,6 +123,16 @@ button:hover {
   padding: 0 10px;
 }
 
+@media (max-width: 767px) {
+  .events-list {
+    grid-template-rows: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 30px;
+  }
+  .events-list .event {
+    padding: 15px;
+    width: 10%;
+  }
+}
 
 .events-list .event {
   padding: 20px;
@@ -144,13 +154,14 @@ button:hover {
   -o-border-radius: 10px;
 }
 
+
 .events-list .event h3 {
-  /* text-align: center; */
   color: #4b6dc3;
   margin: 0 0 10px;
   padding-bottom: 8px;
   border-bottom: 2px solid #ecf0f1;
 }
+
 .event p {
   display: flex;
   align-items: center;
@@ -182,10 +193,6 @@ button:hover {
   color: white;
   font-weight: bold;
   transition: 0.3s ease-in-out;
-  -webkit-transition: 0.3s ease-in-out;
-  -moz-transition: 0.3s ease-in-out;
-  -ms-transition: 0.3s ease-in-out;
-  -o-transition: 0.3s ease-in-out;
 }
 
 .event button:first-child {
