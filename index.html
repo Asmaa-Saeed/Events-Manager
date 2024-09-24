@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events Manager</title>
+    <link rel="stylesheet" href="CSS/styles.css">
+    <link rel="stylesheet" href="CSS/all.min.css">
+    <link rel="stylesheet" href="CSS/normalize.css">
+</head>
+<body>
+    <!-- <h1 class="app-title">Events Manager Application</h1> -->
+    <div class="events-container">
+        <h2>Events Manager</h2>
+        <input type="text" placeholder="Event Name" class="event-name">
+        <input type="text" placeholder="Event Organizer" class="event-organizer">
+        <input type="date" class="event-date">
+        <!-- <input type="time" class="event-time"> -->
+        <button class="add-btn" onclick="addEvent()">Add Event</button>
+    </div>
+    <div class="error-message"></div>
+    <div class="events-list"></div>
+    <script src="index.js"></script>
+</body>
+</html>
