@@ -12,9 +12,26 @@
     <!-- <h1 class="app-title">Events Manager Application</h1> -->
     <div class="events-container">
         <h2>Events Manager</h2>
-        <input type="text" placeholder="Event Name" class="event-name">
-        <input type="text" placeholder="Event Organizer" class="event-organizer">
-        <input type="date" class="event-date">
+        <div>
+            <input type="text" placeholder="Event Name" class="event-name">
+            <div class="eventNameError"></div>
+        </div>
+        <div>
+            <input type="text" placeholder="Event Organizer" class="event-organizer">
+            <div class="eventOrganizerError"></div>
+        </div>
+        <div>
+            <select class="event-category">
+                <option value="work">Work</option>
+                <option value="personal">Personal</option>
+                <option value="other">Other</option>
+            </select>
+            <div class="eventCategoryError"></div>
+        </div>
+        <div>
+            <input type="date" class="event-date">
+            <div class="eventDateError"> </div>
+            </div>
         <!-- <input type="time" class="event-time"> -->
         <button class="add-btn" onclick="addEvent()">Add Event</button>
     </div>

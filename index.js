@@ -1,7 +1,4 @@
-// console.log(new Date());
-// console.log(new Date().toISOString());
-// console.log(new Date().toISOString().split("T"));
-// console.log(new Date().toISOString().split("T")[0]);
+
 let currentEventIndex = null; // To track the index of the event being updated
 
 const errorMessageEl = document.querySelector(".error-message");
@@ -26,11 +23,41 @@ function addEvent() {
     const eventNameInput = document.querySelector(".event-name").value;
     const eventOrganizerInput = document.querySelector(".event-organizer").value;
     const eventDateInput = document.querySelector(".event-date").value;
+    const eventCategoryInput = document.querySelector(".event-category").value;
 
-    if (!eventNameInput || !eventOrganizerInput || !eventDateInput) {
-        return alert("Please fill in all fields.");
+    //make sure each input has a value
+    // event.preventDefault();
+    let isValid = true;
+    if (!eventNameInput) {
+        document.querySelector(".eventNameError").innerText = "Please Fill Out This Field.";
+        document.querySelector(".event-name").style.borderColor = "red";
+        isValid = false;
+    }else {
+        document.querySelector(".eventNameError").innerText = "";
+        document.querySelector(".event-name").style.borderColor = "";
+    }
+    if (!eventOrganizerInput) {
+        document.querySelector(".eventOrganizerError").innerText = "Please Fill Out This Field.";
+        document.querySelector(".event-organizer").style.borderColor = "red";
+        isValid = false;
+    }else {
+        document.querySelector(".eventOrganizerError").innerText = "";
+        document.querySelector(".event-organizer").style.borderColor = "";
+    }
+    if (!eventDateInput) {
+        document.querySelector(".eventDateError").innerText = "Please Fill Out This Field.";
+        document.querySelector(".event-date").style.borderColor = "red";
+        isValid = false;
+    }else {
+        document.querySelector(".eventDateError").innerText = "";
+        document.querySelector(".event-date").style.borderColor = "";
+    }
+    
+    if(!isValid) {
+        return; // stop the validation if the isValid = false;
     }
 
+    
     const eventTimeStamp = new Date(eventDateInput).getTime();
 
     const event = {
@@ -38,6 +65,7 @@ function addEvent() {
         organizer: eventOrganizerInput,
         date: eventDateInput,
         time: eventTimeStamp,
+        category:eventCategoryInput
     };
 
     let events = JSON.parse(localStorage.getItem("events")) || [];
@@ -79,6 +107,7 @@ function displayEvents() {
                 <h3>${event.name}</h3>
                 <p><strong>Organizer:</strong> ${event.organizer}</p>
                 <p><strong>Date:</strong> ${event.date}</p>
+                <p><strong>Category:</strong> ${event.category}</p>
                 <p><strong>Time left:</strong> ${countdown}</p>
                 <div class="event-buttons">
                     <button class="update-btn" onclick="updateEvent(${index})"><i class="fa-solid fa-arrow-up-right-from-square"></i></button>
@@ -124,6 +153,10 @@ function deleteEvent(index) {
     localStorage.setItem("events", JSON.stringify(events));
     displayEvents();
 };
+
+function openPopup(){
+
+}
 
 setInterval(displayEvents, 1000);
 setMinDate();
